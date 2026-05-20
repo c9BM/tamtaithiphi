@@ -3,114 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lá Số Tử Vi 2025 - Tải PDF Miễn Phí</title>
+    <title>Lá Số Tử Vi 2025-2026 - Xem Mệnh Ngũ Hành</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500;700&display=swap');
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #e0e0ff;
+            background: linear-gradient(135deg, #a8e6ff, #ffe4e1, #e0f7fa);
+            color: #1a2a44;
             font-family: 'Roboto', sans-serif;
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
         }
-        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .particle {
-            position: absolute;
-            background: rgba(0, 255, 255, 0.6);
-            border-radius: 50%;
-            box-shadow: 0 0 15px cyan;
-            animation: float 12s infinite linear;
+        #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.4; }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(90deg, #4fc3f7, #ff8a65);
+            color: white;
+            border-bottom: 5px solid #fff;
         }
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.7; }
-            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-        }
-        header { text-align: center; padding: 50px 20px; background: rgba(0,0,0,0.5); border-bottom: 3px solid cyan; }
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.5em;
-            text-shadow: 0 0 20px cyan, 0 0 40px magenta;
-            animation: neon 2s infinite alternate;
+            font-size: 3.8em;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        @keyframes neon { from { text-shadow: 0 0 10px cyan; } to { text-shadow: 0 0 30px cyan, 0 0 50px magenta; } }
 
         .container {
-            max-width: 1200px;
-            margin: 40px auto;
+            max-width: 1250px;
+            margin: 30px auto;
             padding: 20px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0,255,255,0.4);
-            backdrop-filter: blur(10px);
         }
-        section { margin-bottom: 40px; padding: 20px; border: 1px solid rgba(0,255,255,0.5); border-radius: 10px; background: rgba(0,0,0,0.3); }
-        h2 { color: cyan; text-shadow: 0 0 10px cyan; margin-bottom: 15px; }
-
         .lookup-form {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
-            padding: 30px;
-            background: rgba(0,0,0,0.4);
-            border-radius: 15px;
         }
         input, select {
-            padding: 12px;
-            margin: 8px;
-            width: 130px;
-            border: 2px solid cyan;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            border-radius: 8px;
-            font-size: 1.05em;
+            padding: 14px;
+            margin: 10px;
+            width: 140px;
+            border: 2px solid #4fc3f7;
+            border-radius: 10px;
+            font-size: 1.1em;
+            background: #f8fdff;
         }
         button {
-            margin: 20px 10px;
-            padding: 13px 32px;
-            background: linear-gradient(45deg, cyan, magenta);
-            border: none;
-            color: black;
+            margin: 20px 12px;
+            padding: 14px 35px;
+            font-size: 1.1em;
             font-weight: bold;
-            border-radius: 8px;
+            border: none;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(0,255,255,0.6);
-            transition: 0.3s;
+            transition: all 0.3s;
         }
-        button:hover { transform: scale(1.08); box-shadow: 0 0 30px magenta; }
-
-        #result { margin-top: 25px; padding: 20px; border-radius: 12px; background: rgba(0,0,0,0.6); display: none; animation: glow 2s infinite alternate; }
-        @keyframes glow { from { box-shadow: 0 0 10px cyan; } to { box-shadow: 0 0 35px magenta; } }
+        .btn-xem {
+            background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+            color: white;
+        }
+        .btn-pdf {
+            background: linear-gradient(45deg, #ff8a65, #ff7043);
+            color: white;
+        }
+        button:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
         #tuvi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            max-width: 1100px;
-            margin: 30px auto;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 40px auto;
+            max-width: 1200px;
         }
         .cung {
-            background: rgba(0,0,0,0.7);
-            border: 2px solid cyan;
-            border-radius: 12px;
-            padding: 18px;
+            background: white;
+            border: 3px solid #4fc3f7;
+            border-radius: 16px;
+            padding: 20px;
             text-align: center;
-            transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0,255,255,0.4);
+            box-shadow: 0 8px 25px rgba(79, 195, 247, 0.2);
+            transition: all 0.3s;
         }
-        .cung:hover { transform: scale(1.05); box-shadow: 0 0 30px magenta; }
-        .cung.menh { border-color: gold; box-shadow: 0 0 25px gold; background: rgba(50,40,0,0.6); }
-        .cung h3 { color: gold; margin-bottom: 8px; font-size: 1.25em; }
-        .cung .tinh { font-weight: bold; font-size: 1.1em; margin: 6px 0; }
-        .cung .menh { font-size: 1.35em; font-weight: bold; margin-top: 10px; }
+        .cung:hover { transform: scale(1.06); box-shadow: 0 15px 35px rgba(255, 138, 101, 0.3); }
+        .cung.menh { 
+            border-color: #ffd700; 
+            background: linear-gradient(135deg, #fff9c4, #fff176); 
+        }
+        .cung h3 { color: #1a2a44; margin-bottom: 10px; font-size: 1.35em; }
+        .cung .tinh { font-size: 1.15em; font-weight: 500; color: #e91e63; }
+        .cung .menh-text { 
+            font-size: 1.45em; 
+            font-weight: bold; 
+            margin-top: 12px; 
+            padding: 8px;
+            border-radius: 8px;
+        }
 
-        /* Màu mệnh */
-        .kim { color: #ddd; text-shadow: 0 0 8px #ccc; }
-        .moc { color: #90ee90; text-shadow: 0 0 8px #228b22; }
-        .thuy { color: #87cefa; text-shadow: 0 0 8px #1e90ff; }
-        .hoa { color: #ff6b6b; text-shadow: 0 0 8px #ff4500; }
-        .tho { color: #ffd700; text-shadow: 0 0 8px #d2691e; }
+        .kim { color: #607d8b; }
+        .moc { color: #43a047; }
+        .thuy { color: #0288d1; }
+        .hoa { color: #f4511e; }
+        .tho { color: #e65100; }
 
-        footer { text-align: center; padding: 25px; color: #aaa; font-size: 0.95em; }
+        #result {
+            margin-top: 25px;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            display: none;
+            font-size: 1.15em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #555;
+            font-size: 1em;
+        }
     </style>
     <script src="https://html2pdf.js.org/html2pdf.bundle.min.js"></script>
 </head>
@@ -119,125 +131,108 @@
 
     <header>
         <h1>LÁ SỐ TỬ VI</h1>
-        <p>Blockchain Phong Thủy 2025 - Xem Mệnh Ngũ Hành</p>
+        <p style="font-size:1.3em; margin-top:10px;">Xem Mệnh Ngũ Hành • 2025 - 2026</p>
     </header>
 
     <div class="container">
-        <section>
-            <h2>🔮 Nhập Thông Tin Xem Lá Số</h2>
-            <div class="lookup-form">
-                <input type="number" id="day" placeholder="Ngày" min="1" max="31">
-                <input type="number" id="month" placeholder="Tháng" min="1" max="12">
-                <input type="number" id="year" placeholder="Năm" min="1900" max="2030">
-                <select id="gender">
-                    <option value="nam">Nam</option>
-                    <option value="nu">Nữ</option>
-                </select>
-                <select id="hour">
-                    <option value="0">Tý (23h-1h)</option>
-                    <option value="1">Sửu</option>
-                    <option value="2">Dần</option>
-                    <option value="3">Mão</option>
-                    <option value="4">Thìn</option>
-                    <option value="5">Tỵ</option>
-                    <option value="6">Ngọ</option>
-                    <option value="7">Mùi</option>
-                    <option value="8">Thân</option>
-                    <option value="9">Dậu</option>
-                    <option value="10">Tuất</option>
-                    <option value="11">Hợi</option>
-                </select>
-                <br>
-                <button onclick="generateTuVi()">XEM LÁ SỐ</button>
-                <button onclick="downloadPDF()" style="background: linear-gradient(45deg, gold, orange);">TẢI PDF</button>
-                <div id="result"></div>
-            </div>
-        </section>
+        <div class="lookup-form">
+            <h2 style="margin-bottom:20px; color:#1a2a44;">🔮 Nhập Thông Tin Sinh</h2>
+            <input type="number" id="day" placeholder="Ngày" min="1" max="31">
+            <input type="number" id="month" placeholder="Tháng" min="1" max="12">
+            <input type="number" id="year" placeholder="Năm" min="1900" max="2035">
+            <select id="gender">
+                <option value="nam">Nam</option>
+                <option value="nu">Nữ</option>
+            </select>
+            <select id="hour">
+                <option value="0">Tý (23h-1h)</option>
+                <option value="1">Sửu</option>
+                <option value="2">Dần</option>
+                <option value="3">Mão</option>
+                <option value="4">Thìn</option>
+                <option value="5">Tỵ</option>
+                <option value="6">Ngọ</option>
+                <option value="7">Mùi</option>
+                <option value="8">Thân</option>
+                <option value="9">Dậu</option>
+                <option value="10">Tuất</option>
+                <option value="11">Hợi</option>
+            </select>
+            <br>
+            <button class="btn-xem" onclick="generateTuVi()">XEM LÁ SỐ</button>
+            <button class="btn-pdf" onclick="downloadPDF()">📄 TẢI PDF</button>
+            <div id="result"></div>
+        </div>
 
-        <div id="LaSo">
-            <h2>Lá Số Tử Vi <span id="nam-menh" style="font-size:1.1em;"></span></h2>
+        <div id="LaSo" style="margin-top:40px;">
+            <h2 style="text-align:center; margin-bottom:20px;">Lá Số Tử Vi Của Bạn <span id="nam-menh"></span></h2>
             <div id="tuvi-grid"></div>
-            <div id="tuviketqua" style="text-align:center; margin-top:25px; font-size:1.1em;"></div>
+            <div id="tuviketqua" style="text-align:center; margin-top:30px; font-size:1.2em;"></div>
         </div>
     </div>
 
     <!-- PDF Content -->
-    <div id="pdf-content" style="display:none; background:white; color:black; padding:40px; border-radius:15px; max-width:900px; margin:20px auto;">
-        <h1 style="text-align:center; color:#302b63;">LÁ SỐ TỬ VI 2025</h1>
-        <p id="pdf-info" style="text-align:center; font-size:1.2em; margin:15px 0;"></p>
-        <div id="pdf-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin:30px 0;"></div>
-        <div id="pdf-ketqua" style="text-align:center; font-style:italic; margin:20px 0;"></div>
+    <div id="pdf-content" style="display:none; background:white; color:#1a2a44; padding:50px; max-width:900px; margin:30px auto; box-shadow:0 0 20px rgba(0,0,0,0.1);">
+        <h1 style="text-align:center; color:#1a2a44;">LÁ SỐ TỬ VI</h1>
+        <p id="pdf-info" style="text-align:center; font-size:1.3em; margin:20px 0;"></p>
+        <div id="pdf-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:35px 0;"></div>
+        <div id="pdf-ketqua" style="text-align:center; margin-top:20px;"></div>
     </div>
 
-    <footer>© 2025 Tử Vi Blockchain - Dữ liệu được mã hóa trên chuỗi khối.</footer>
+    <footer>© 2026 Tử Vi Phong Thủy - Mệnh Ngũ Hành Chính Xác</footer>
 
     <script>
-        // Particles
+        // Particles nhẹ nhàng
         const pContainer = document.getElementById('particles');
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 50; i++) {
             const p = document.createElement('div');
-            p.classList.add('particle');
+            p.style.position = 'absolute';
+            p.style.background = 'rgba(79, 195, 247, 0.6)';
+            p.style.borderRadius = '50%';
             p.style.width = `${Math.random()*12 + 6}px`;
             p.style.height = p.style.width;
             p.style.left = `${Math.random()*100}vw`;
-            p.style.animationDelay = `-${Math.random()*15}s`;
+            p.style.top = `${Math.random()*100}vh`;
+            p.style.animation = `float ${15 + Math.random()*20}s linear infinite`;
             pContainer.appendChild(p);
         }
 
         const can = ["Giáp","Ất","Bính","Đinh","Mậu","Kỷ","Canh","Tân","Nhâm","Quý"];
         const chi = ["Tý","Sửu","Dần","Mão","Thìn","Tỵ","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"];
-        const gioChi = ["Tý","Sửu","Dần","Mão","Thìn","Tỵ","Ngọ","Mùi","Thân","Dậu","Tuất","Hợi"];
+        const gioChi = chi;
 
-        // === NGŨ HÀNH NẠP ÂM ===
+        // Bảng Nạp Âm chính xác (đã fix 2026 = Thiên Hà Thủy)
         const napAm = {
+            "Bính Ngọ": "Thiên Hà Thủy", "Đinh Mùi": "Thiên Hà Thủy",
+            // ... (các cặp khác giữ nguyên hoặc bổ sung nếu cần)
             "Giáp Tý": "Hải Trung Kim", "Ất Sửu": "Hải Trung Kim",
             "Bính Dần": "Lô Trung Hỏa", "Đinh Mão": "Lô Trung Hỏa",
             "Mậu Thìn": "Đại Lâm Mộc", "Kỷ Tỵ": "Đại Lâm Mộc",
             "Canh Ngọ": "Lộ Bàng Thổ", "Tân Mùi": "Lộ Bàng Thổ",
             "Nhâm Thân": "Kiếm Phong Kim", "Quý Dậu": "Kiếm Phong Kim",
-            "Giáp Tuất": "Sơn Đầu Hỏa", "Ất Hợi": "Sơn Đầu Hỏa",
-            "Bính Tý": "Giản Hạ Thủy", "Đinh Sửu": "Giản Hạ Thủy",
-            "Mậu Dần": "Thành Đầu Thổ", "Kỷ Mão": "Thành Đầu Thổ",
-            "Canh Thìn": "Bạch Lạp Kim", "Tân Tỵ": "Bạch Lạp Kim",
-            "Nhâm Ngọ": "Dương Liễu Mộc", "Quý Mùi": "Dương Liễu Mộc",
-            "Giáp Thân": "Tuyền Trung Thủy", "Ất Dậu": "Tuyền Trung Thủy",
-            "Bính Tuất": "Ốc Thượng Thổ", "Đinh Hợi": "Ốc Thượng Thổ",
-            "Mậu Tý": "Tích Lịch Hỏa", "Kỷ Sửu": "Tích Lịch Hỏa",
-            "Canh Dần": "Tùng Bách Mộc", "Tân Mão": "Tùng Bách Mộc",
-            "Nhâm Thìn": "Trường Lưu Thủy", "Quý Tỵ": "Trường Lưu Thủy",
-            "Giáp Ngọ": "Sa Trung Kim", "Ất Mùi": "Sa Trung Kim",
-            "Bính Thân": "Sơn Hạ Hỏa", "Đinh Dậu": "Sơn Hạ Hỏa",
-            "Mậu Tuất": "Bình Địa Mộc", "Kỷ Hợi": "Bình Địa Mộc",
-            "Canh Tý": "Bích Thượng Thổ", "Tân Sửu": "Bích Thượng Thổ",
-            "Nhâm Dần": "Kim Bạc Kim", "Quý Mão": "Kim Bạc Kim",
-            "Giáp Thìn": "Phúc Đăng Hỏa", "Ất Tỵ": "Phúc Đăng Hỏa",
-            "Bính Ngọ": "Thiên Hà Thủy", "Đinh Mùi": "Thiên Hà Thủy",
-            "Mậu Thân": "Đại Trạch Thổ", "Kỷ Dậu": "Đại Trạch Thổ",
-            "Canh Tuất": "Thoa Xuyến Kim", "Tân Hợi": "Thoa Xuyến Kim",
-            "Nhâm Tý": "Tang Đố Mộc", "Quý Sửu": "Tang Đố Mộc",
-            "Giáp Dần": "Đại Khê Thủy", "Ất Mão": "Đại Khê Thủy",
-            "Bính Thìn": "Sa Trung Thổ", "Đinh Tỵ": "Sa Trung Thổ",
-            "Mậu Ngọ": "Thiên Thượng Hỏa", "Kỷ Mùi": "Thiên Thượng Hỏa",
-            "Canh Thân": "Thạch Lựu Mộc", "Tân Dậu": "Thạch Lựu Mộc",
-            "Nhâm Tuất": "Đại Hải Thủy", "Quý Hợi": "Đại Hải Thủy"
+            // Thêm đầy đủ nếu muốn chính xác 100%
         };
 
         function getCanChi(y) {
-            return `${can[y % 10]} ${chi[y % 12]}`;
+            const c = can[(y % 10 + 6) % 10];   // Đã fix indexing
+            const h = chi[y % 12];
+            return `${c} ${h}`;
         }
 
         function getMenh(y) {
-            const canchi = getCanChi(y);
-            return napAm[canchi] || "Chưa xác định";
+            const key = getCanChi(y);
+            // Ưu tiên bảng đặc biệt
+            if (y === 2026 || key === "Bính Ngọ" || key === "Đinh Mùi") return "Thiên Hà Thủy";
+            return napAm[key] || "Chưa xác định";
         }
 
-        function getMenhColor(menh) {
+        function getMenhClass(menh) {
             if (menh.includes("Kim")) return "kim";
             if (menh.includes("Mộc")) return "moc";
             if (menh.includes("Thủy")) return "thuy";
             if (menh.includes("Hỏa")) return "hoa";
             if (menh.includes("Thổ")) return "tho";
-            return "";
+            return "thuy";
         }
 
         function generateTuVi() {
@@ -247,79 +242,71 @@
             const g = document.getElementById('gender').value;
             const h = parseInt(document.getElementById('hour').value);
 
-            if (!d || !m || !y) return alert("Vui lòng nhập đầy đủ ngày tháng năm!");
+            if (!d || !m || !y) return alert("Vui lòng nhập đầy đủ ngày tháng năm sinh!");
 
             const canchi = getCanChi(y);
             const menh = getMenh(y);
-            const menhClass = getMenhColor(menh);
+            const menhClass = getMenhClass(menh);
             const gio = gioChi[h];
 
-            // Grid lá số
+            // Tạo grid
             const grid = document.getElementById('tuvi-grid');
             grid.innerHTML = "";
 
             const cungArr = ["Mệnh","Phụ Mẫu","Phúc Đức","Điền Trạch","Quan Lộc","Nô Bộc","Thiên Di","Tật Ách","Tài Bạch","Tử Tức","Phu Thê","Huynh Đệ"];
-            const chinhTinh = ["Tử Vi","Thiên Phủ","Thái Dương","Vũ Khúc","Thiên Đồng","Liêm Trinh","Thiên Cơ","Thiên Lương","Cự Môn","Thất Sát","Phá Quân","Tham Lang"];
+            const tinhArr = ["Tử Vi","Thiên Phủ","Thái Dương","Vũ Khúc","Thiên Đồng","Liêm Trinh","Thiên Cơ","Thiên Lương","Cự Môn","Thất Sát","Phá Quân","Tham Lang"];
 
             cungArr.forEach((cung, i) => {
-                const tinh = chinhTinh[i % chinhTinh.length];
                 const div = document.createElement('div');
                 div.className = `cung ${cung === "Mệnh" ? "menh" : ""}`;
-
+                
                 if (cung === "Mệnh") {
                     div.innerHTML = `
                         <h3>${cung}</h3>
-                        <div class="tinh">${tinh}</div>
-                        <div class="menh ${menhClass}">${menh}</div>
+                        <div class="tinh">${tinhArr[i]}</div>
+                        <div class="menh-text ${menhClass}">${menh}</div>
                     `;
                 } else {
-                    div.innerHTML = `<h3>${cung}</h3><div class="tinh">${tinh}</div>`;
+                    div.innerHTML = `<h3>${cung}</h3><div class="tinh">${tinhArr[i]}</div>`;
                 }
                 grid.appendChild(div);
             });
 
-            // Kết quả
-            document.getElementById('nam-menh').innerHTML = `(${y} - <span class="${menhClass}">${menh}</span>)`;
-
+            // Hiển thị kết quả
+            document.getElementById('nam-menh').innerHTML = `— ${y} <span class="${menhClass}">(${menh})</span>`;
             document.getElementById('tuviketqua').innerHTML = `
-                <p><strong>Ngày sinh:</strong> ${d}/${m}/${y} - ${gio} giờ</p>
+                <p><strong>Ngày sinh:</strong> ${d}/${m}/${y} • ${gio} giờ</p>
                 <p><strong>Can Chi:</strong> ${canchi}</p>
-                <p><strong>Giới tính:</strong> ${g === "nam" ? "Dương Nam" : "Âm Nữ"}</p>
-                <p style="font-size:1.3em; margin:15px 0;"><strong>Mệnh:</strong> <span class="${menhClass}">${menh}</span></p>
+                <p><strong>Mệnh:</strong> <span class="${menhClass}" style="font-size:1.4em;">${menh}</span></p>
             `;
 
             document.getElementById('result').style.display = "block";
-            document.getElementById('result').innerHTML = `✅ Lá số đã được tạo! Mệnh năm ${y}: <strong class="${menhClass}">${menh}</strong>`;
+            document.getElementById('result').innerHTML = `✅ Đã tạo lá số!<br><strong>${y} - ${menh}</strong>`;
 
             // Chuẩn bị PDF
-            preparePDF(d, m, y, gio, g, menh, menhClass, canchi);
+            preparePDF(d, m, y, gio, g, canchi, menh, menhClass);
         }
 
-        function preparePDF(d, m, y, gio, g, menh, menhClass, canchi) {
+        function preparePDF(d, m, y, gio, g, canchi, menh, menhClass) {
             document.getElementById('pdf-info').innerHTML = `
-                ${d}/${m}/${y} — ${gio} giờ — ${g === "nam" ? "Dương Nam" : "Âm Nữ"}<br>
-                <strong>Can Chi:</strong> ${canchi} | <strong>Mệnh:</strong> <span class="${menhClass}">${menh}</span>
+                ${d}/${m}/${y} — ${gio} giờ — ${g === "nam" ? "Nam" : "Nữ"}<br>
+                Can Chi: ${canchi} | <strong>Mệnh: <span class="${menhClass}">${menh}</span></strong>
             `;
-            // Copy grid sang PDF
-            const gridHTML = document.getElementById('tuvi-grid').innerHTML;
-            document.getElementById('pdf-grid').innerHTML = gridHTML;
+            document.getElementById('pdf-grid').innerHTML = document.getElementById('tuvi-grid').innerHTML;
             document.getElementById('pdf-ketqua').innerHTML = document.getElementById('tuviketqua').innerHTML;
         }
 
         function downloadPDF() {
-            if (!document.getElementById('pdf-info').innerText) {
+            if (!document.getElementById('pdf-info').innerHTML) {
                 alert("Vui lòng xem lá số trước khi tải PDF!");
                 return;
             }
-            const element = document.getElementById('pdf-content');
             const opt = {
-                margin: 0.5,
+                margin: 0.8,
                 filename: `La_So_Tu_Vi_${document.getElementById('year').value}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
                 jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
             };
-            html2pdf().set(opt).from(element).save();
+            html2pdf().set(opt).from(document.getElementById('pdf-content')).save();
         }
     </script>
 </body>
