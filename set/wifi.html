@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Định Vị Xe Ô Tô Thời Gian Thực</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        #map {
+            height: 70vh;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .info {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .car-icon {
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📍 Định Vị Xe Ô Tô Đang Di Chuyển</h1>
+    
+    <div class="info">
+        <strong>Vĩ độ:</strong> <span id="lat">10.8231</span> | 
+        <strong>Kinh độ:</strong> <span id="lng">106.6297</span> | 
+        <strong>Tốc độ:</strong> <span id="speed">45</span> km/h
+    </div>
+
+    <div id="map"></div>
+
+    <div style="text-align:center; margin-top:10px;">
+        <button onclick="startSimulation()">▶ Bắt đầu di chuyển</button>
+        <button onclick="stopSimulation()">⏹ Dừng</button>
+        <button onclick="resetPosition()">🔄 Reset</button>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Khởi tạo bản đồ (TP.HCM)
+        let map = L.map('map').setView([10.8231, 106.6297], 15);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Icon xe ô tô
+        const carIcon = L.divIcon({
+            className: 'car-icon',
+            html: '🚗',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
+
+        let carMarker = L.marker([10.8231, 106.6297], {icon: carIcon}).addTo(map);
+        let polyline = L.polyline([], {color: 'red', weight: 4}).addTo(map);
+
+        let interval;
+        let currentLat = 10.8231;
+        let currentLng = 106.6297;
+        let isMoving = false;
+
+        // Tọa độ mô phỏng di chuyển (quanh khu vực Quận 1 - Quận 7)
+        const route = [
+            [10.8231, 106.6297],
+            [10.8205, 106.6350],
+            [10.8150, 106.6405],
+            [10.8100, 106.6450],
+            [10.8055, 106.6400],
+            [10.8100, 106.6300],
+            [10.8200, 106.6250],
+            [10.8231, 106.6297]
+        ];
+        let index = 0;
+
+        function updatePosition() {
+            index = (index + 1) % route.length;
+            currentLat = route[index][0] + (Math.random() * 0.002 - 0.001); // thêm nhiễu
+            currentLng = route[index][1] + (Math.random() * 0.002 - 0.001);
+
+            const speed = Math.floor(30 + Math.random() * 40); // 30-70 km/h
+
+            // Cập nhật marker
+            carMarker.setLatLng([currentLat, currentLng]);
+            
+            // Cập nhật polyline (đường đi)
+            polyline.addLatLng([currentLat, currentLng]);
+
+            // Cập nhật thông tin
+            document.getElementById('lat').textContent = currentLat.toFixed(6);
+            document.getElementById('lng').textContent = currentLng.toFixed(6);
+            document.getElementById('speed').textContent = speed;
+
+            // Tự động zoom theo xe
+            map.panTo([currentLat, currentLng]);
+        }
+
+        function startSimulation() {
+            if (!isMoving) {
+                isMoving = true;
+                interval = setInterval(updatePosition, 1500); // Cập nhật mỗi 1.5 giây
+                alert("🚗 Xe đã bắt đầu di chuyển!");
+            }
+        }
+
+        function stopSimulation() {
+            clearInterval(interval);
+            isMoving = false;
+        }
+
+        function resetPosition() {
+            stopSimulation();
+            polyline.setLatLngs([]); // Xóa đường đi
+            index = 0;
+            currentLat = 10.8231;
+            currentLng = 106.6297;
+            carMarker.setLatLng([currentLat, currentLng]);
+            map.setView([currentLat, currentLng], 15);
+            
+            document.getElementById('lat').textContent = currentLat.toFixed(6);
+            document.getElementById('lng').textContent = currentLng.toFixed(6);
+        }
+
+        // Khởi động tự động sau 1 giây
+        window.onload = () => {
+            setTimeout(() => {
+                alert("Nhấn 'Bắt đầu di chuyển' để xem xe di chuyển thời gian thực.");
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
