@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISA • Random Number Generator</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+        
+        .visa-card {
+            background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ffd700;
+        }
+        
+        .visa-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .visa-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffd700;
+            letter-spacing: 2px;
+        }
+        
+        .chip {
+            width: 60px;
+            height: 45px;
+            background: linear-gradient(#ffd700, #b89700);
+            border-radius: 8px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .chip::after {
+            content: '• • • •';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #1a1a1a;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .number-display {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-align: center;
+            margin: 30px 0;
+            min-height: 45px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        .input-section {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0,0,0,0.4);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 16px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-random {
+            background: linear-gradient(90deg, #ffd700, #ffaa00);
+            color: #1a1a1a;
+        }
+        
+        .btn-save {
+            background: #00cc66;
+            color: white;
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .history {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+        
+        .history-item {
+            background: rgba(255,255,255,0.08);
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+        }
+        
+        .status {
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .success { background: #00cc66; color: #000; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="visa-card">
+            <!-- Visa Card Header -->
+            <div class="card-header">
+                <div class="visa-logo">VISA</div>
+                <div style="text-align: right; font-size: 13px; opacity: 0.8;">
+                    Premium<br>
+                    <span id="card-type">RANDOM</span>
+                </div>
+            </div>
+            
+            <!-- Chip -->
+            <div class="chip"></div>
+            
+            <!-- Số ngẫu nhiên -->
+            <div class="number-display" id="display">000</div>
+            
+            <div style="text-align: center; font-size: 13px; opacity: 0.7; margin-bottom: 10px;">
+                SỐ NGẪU NHIÊN (1 - 200)
+            </div>
+            
+            <!-- Input thủ công -->
+            <div class="input-section">
+                <input type="number" id="manual-input" placeholder="Nhập số thủ công (1-200)" min="1" max="200">
+                
+                <button class="btn-random" onclick="generateRandom()">
+                    🎲 TẠO SỐ NGẪU NHIÊN
+                </button>
+                
+                <button class="btn-save" onclick="saveToDB()">
+                    💾 LƯU VÀO DATABASE
+                </button>
+            </div>
+            
+            <!-- Status -->
+            <div class="status" id="status" style="display: none;"></div>
+            
+            <!-- Lịch sử -->
+            <div style="margin-top: 25px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3 style="font-size: 16px;">📋 Lịch sử gần đây</h3>
+                    <button onclick="clearHistory()" style="background: none; border: none; color: #ffd700; font-size: 13px; cursor: pointer;">Xóa</button>
+                </div>
+                <div class="history" id="history"></div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 20px; font-size: 12px; opacity: 0.6;">
+            Firebase DB: findhome777-default-rtdb
+        </div>
+    </div>
+
+    <script>
+        // Firebase Config
+        const firebaseConfig = {
+            databaseURL: "https://findhome777-default-rtdb.firebaseio.com"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const ref = db.ref('visa_random_numbers');
+        
+        let currentNumber = null;
+        let history = [];
+        
+        // Tạo số ngẫu nhiên
+        function generateRandom() {
+            currentNumber = Math.floor(Math.random() * 200) + 1;
+            document.getElementById('display').textContent = String(currentNumber).padStart(3, '0');
+            document.getElementById('manual-input').value = currentNumber;
+            
+            // Hiệu ứng
+            const display = document.getElementById('display');
+            display.style.transition = 'none';
+            display.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                display.style.transition = 'transform 0.3s';
+                display.style.transform = 'scale(1)';
+            }, 10);
+        }
+        
+        // Lưu vào DB
+        function saveToDB() {
+            const num = document.getElementById('manual-input').value || currentNumber;
+            
+            if (!num || num < 1 || num > 200) {
+                showStatus("Số phải nằm trong khoảng 1-200!", "error");
+                return;
+            }
+            
+            const timestamp = Date.now();
+            const entry = {
+                number: parseInt(num),
+                timestamp: timestamp,
+                date: new Date().toLocaleString('vi-VN')
+            };
+            
+            ref.push(entry)
+                .then(() => {
+                    showStatus("✅ Đã lưu thành công vào Firebase!", "success");
+                    addToHistory(entry);
+                })
+                .catch((error) => {
+                    console.error(error);
+                    showStatus("❌ Lỗi khi lưu: " + error.message, "error");
+                });
+        }
+        
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.style.display = 'block';
+            statusEl.className = 'status ' + (type === 'success' ? 'success' : '');
+            
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 4000);
+        }
+        
+        function addToHistory(entry) {
+            history.unshift(entry);
+            if (history.length > 8) history.pop();
+            renderHistory();
+        }
+        
+        function renderHistory() {
+            const container = document.getElementById('history');
+            container.innerHTML = '';
+            
+            history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.innerHTML = `
+                    <span><strong>${String(item.number).padStart(3, '0')}</strong></span>
+                    <span style="opacity: 0.7; font-size: 13px;">${item.date}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+        
+        function clearHistory() {
+            if (confirm("Xóa toàn bộ lịch sử?")) {
+                history = [];
+                renderHistory();
+            }
+        }
+        
+        // Load lịch sử từ DB (optional)
+        function loadRecentFromDB() {
+            ref.limitToLast(10).on('value', (snapshot) => {
+                const data = snapshot.val();
+                if (data) {
+                    history = Object.values(data).sort((a,b) => b.timestamp - a.timestamp).slice(0, 8);
+                    renderHistory();
+                }
+            });
+        }
+        
+        // Khởi tạo
+        window.onload = function() {
+            // Tạo số đầu tiên
+            generateRandom();
+            
+            // Load lịch sử
+            loadRecentFromDB();
+            
+            // Enter key support
+            document.getElementById('manual-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    saveToDB();
+                }
+            });
+        };
+    </script>
+</body>
+</html>
