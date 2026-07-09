@@ -1,0 +1,9 @@
+ngành bán dẫn
+
+**Ngành bán dẫn** (hay công nghệ bán dẫn) là lĩnh vực kỹ thuật chuyên nghiên cứu, thiết kế và chế tạo các linh kiện điện tử như **vi mạch (chip)**, transistor và bộ vi xử lý dựa trên vật liệu có độ dẫn điện trung gian (như silicon). Đây được xem là **"trái tim" của kỷ nguyên số**, đóng vai trò nền tảng cốt lõi trong cách mạng công nghiệp 4.0 và 5.0, phục vụ cho các công nghệ tiên tiến như **trí tuệ nhân tạo (AI)**, xe điện, 5G, Internet vạn vật (IoT) và điện toán đám mây.
+
+Ngành học này tích hợp kiến thức đa ngành từ **Toán học, Vật lý chất rắn, Khoa học vật liệu và Tin học**, được chia thành hai mảng chính:
+*   **Thiết kế vi mạch (IC Design):** Xây dựng kiến trúc logic, bố trí transistor và mô phỏng mạch điện.
+*   **Sản xuất bán dẫn (Semiconductor Manufacturing):** Chế tạo chip vật lý từ wafer silicon thông qua các quy trình cao cấp như quang khắc, khắc ion và đóng gói.
+
+Tại **Việt Nam**, ngành này đang bùng nổ với sự gia tăng đầu tư từ các tập đoàn lớn như **Intel, Samsung, FPT Semiconductor**. Chính phủ đang đẩy mạnh đào tạo nhân lực chất lượng cao, với các trường đại học uy tín như **ĐHQG-HCM** và **Đại học Bách Khoa Hà Nội** đã chính thức mở ngành. Sinh viên tốt nghiệp có cơ hội nghề nghiệp rộng mở với các vị trí như kỹ sư thiết kế, kỹ sư phòng sạch, hoặc chuyên viên kiểm định tại các nhà máy sản xuất chip và trung tâm R&D trong nước cũng như quốc tế.
