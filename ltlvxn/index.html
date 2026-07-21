@@ -3,88 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>haha</title>
-    <script src="https://tailwindcss.com"></script>
+    <title>HaHa</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen font-sans">
+<body class="bg-slate-50 min-h-screen text-slate-800 antialiased">
 
-    <!-- Giao diện Đăng nhập -->
-    <div id="login-screen" class="flex flex-col items-center justify-center min-h-screen p-4">
-        <div class="bg-white p-8 rounded-xl shadow-md text-center max-w-sm w-full">
-            <h1 class="text-2xl font-bold text-gray-800 mb-6">Quản Lý Thuê Phòng</h1>
-            <p class="text-gray-600 mb-6">Vui lòng đăng nhập bằng tài khoản Google riêng của bạn để quản lý dữ liệu cá nhân.</p>
-            <button id="btn-login" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center gap-2">
-                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22l.81-.63z" fill="#FBBC05"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1C7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
-                Đăng nhập với Google
+    <!-- Screen 1: Đăng nhập -->
+    <div id="login-screen" class="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-slate-900 to-indigo-950 text-white">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl shadow-2xl text-center max-w-md w-full">
+            <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-indigo-500/30">
+                <span class="text-3xl">🏨</span>
+            </div>
+            <h1 class="text-2xl font-bold mb-2">Nhật Ký Thuê Phòng</h1>
+            <p class="text-slate-300 text-sm mb-6">Quản lý và tính toán chi phí lưu trú cá nhân chính xác theo quy chuẩn khách sạn Việt Nam.</p>
+            <button id="btn-login" class="w-full bg-white hover:bg-slate-100 text-slate-900 font-semibold py-3 px-4 rounded-xl transition duration-200 flex items-center justify-center gap-3 shadow-md hover:shadow-lg">
+                <svg class="w-5 h-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22l.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1C7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                Tiếp tục với Google
             </button>
         </div>
     </div>
 
-    <!-- Giao diện Chính (Ẩn lúc chưa log) -->
-    <div id="main-screen" class="hidden max-w-6xl mx-auto p-4 sm:p-6">
-        <header class="flex justify-between items-center bg-white p-4 rounded-xl shadow-sm mb-6">
-            <div>
-                <h1 class="text-xl font-bold text-gray-800">🏨 Nhật Ký Thuê Phòng</h1>
-                <p id="user-email" class="text-sm text-gray-500"></p>
+    <!-- Screen 2: Dashboard chính -->
+    <div id="main-screen" class="hidden max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 mb-6 gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center text-xl">🏨</div>
+                <div>
+                    <h1 class="text-xl font-bold text-slate-800">Sổ Tay Lưu Trú</h1>
+                    <p id="user-email" class="text-xs text-slate-500 font-medium"></p>
+                </div>
             </div>
-            <button id="btn-logout" class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2 rounded-lg font-medium text-sm transition">Đăng xuất</button>
+            <button id="btn-logout" class="bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 border border-slate-200 hover:border-red-200 px-4 py-2 rounded-xl text-sm font-medium transition">
+                Đăng xuất
+            </button>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Form Nhập Liệu -->
-            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm h-fit">
-                <h2 class="text-lg font-bold text-gray-700 mb-4">Thêm Lịch Trình Mới</h2>
+        <!-- Thống kê tổng quan -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Tổng Chi Phí</span>
+                <div id="stat-total-cost" class="text-2xl font-bold text-indigo-600 mt-1">0 đ</div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Số Lần Thuê</span>
+                <div id="stat-total-stays" class="text-2xl font-bold text-slate-800 mt-1">0 lượt</div>
+            </div>
+            <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mô Hình Phổ Biến</span>
+                <div id="stat-popular-type" class="text-2xl font-bold text-emerald-600 mt-1">--</div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Form nhập liệu -->
+            <div class="lg:col-span-5 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm h-fit">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>➕</span> Thêm Lịch Trình Thuê
+                </h2>
                 <form id="booking-form" class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Tên khách sạn / Số phòng</label>
-                        <input type="text" id="hotel-name" required class="w-full border p-2 rounded-lg focus:outline-blue-500">
+                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Địa điểm / Tên Khách sạn</label>
+                        <input type="text" id="hotel-name" required placeholder="Ví dụ: Khách sạn A - Phòng 302" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Hình thức thuê</label>
-                        <select id="booking-type" class="w-full border p-2 rounded-lg focus:outline-blue-500">
-                            <option value="hourly">Thuê theo giờ / Trong ngày</option>
-                            <option value="overnight">Thuê qua đêm (Check-in 14h - Check-out 12h)</option>
+                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Hình thức thuê</label>
+                        <select id="booking-type" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
+                            <option value="hourly">⏱️ Thuê theo giờ (Nhà nghỉ / KS)</option>
+                            <option value="overnight">🌙 Thuê qua đêm (Check-in tối - Check-out trưa)</option>
+                            <option value="daily">📅 Thuê theo ngày (Check-in 14h - Check-out 12h)</option>
                         </select>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-2">
+                    <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-sm font-medium text-gray-600 mb-1">Giờ nhận phòng</label>
-                            <input type="datetime-local" id="check-in" required class="w-full border p-2 rounded-lg focus:outline-blue-500">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Giờ nhận phòng</label>
+                            <input type="datetime-local" id="check-in" required class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-600 mb-1">Giờ trả phòng</label>
-                            <input type="datetime-local" id="check-out" required class="w-full border p-2 rounded-lg focus:outline-blue-500">
+                            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Giờ trả phòng</label>
+                            <input type="datetime-local" id="check-out" required class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition">
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Đơn giá VND</label>
-                        <input type="number" id="price-rate" required placeholder="Ví dụ: 100000" class="w-full border p-2 rounded-lg focus:outline-blue-500">
-                        <span id="rate-help" class="text-xs text-gray-400 mt-1 block">Mức giá tính trên mỗi giờ thuê.</span>
+                    <!-- Khối cấu hình đơn giá linh hoạt -->
+                    <div id="rate-hourly-box" class="space-y-3 bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Giá 1-2 giờ đầu (VND)</label>
+                                <input type="number" id="price-first-hours" placeholder="100000" class="w-full bg-white border border-slate-200 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-slate-600 mb-1">Giá mỗi giờ sau (VND)</label>
+                                <input type="number" id="price-next-hour" placeholder="30000" class="w-full bg-white border border-slate-200 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Quy tắc VN: Dưới 15 phút không tính, trên 15 phút tính tròn thêm 1 giờ.</p>
                     </div>
 
-                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 rounded-lg transition">Tính toán & Lưu lịch trình</button>
+                    <div id="rate-fixed-box" class="hidden bg-slate-50 p-3.5 rounded-xl border border-slate-200/60">
+                        <label class="block text-xs font-medium text-slate-600 mb-1">Đơn giá trọn gói (VND / đêm hoặc ngày)</label>
+                        <input type="number" id="price-fixed" placeholder="350000" class="w-full bg-white border border-slate-200 p-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+
+                    <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-xl transition duration-200 shadow-md shadow-indigo-200">
+                        Tính & Lưu Vào Danh Sách
+                    </button>
                 </form>
             </div>
 
             <!-- Danh sách dữ liệu -->
-            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm">
-                <h2 class="text-lg font-bold text-gray-700 mb-4">Lịch Sử Lưu Trú</h2>
+            <div class="lg:col-span-7 bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-800 mb-4 flex items-center justify-between">
+                    <span>📋 Lịch Sử Lưu Trú</span>
+                </h2>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-600 text-sm uppercase font-semibold border-b">
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase font-semibold border-b border-slate-200">
                                 <th class="p-3">Khách sạn</th>
-                                <th class="p-3">Hình thức</th>
-                                <th class="p-3">Thời gian ở</th>
-                                <th class="p-3">Tổng cộng</th>
-                                <th class="p-3 text-center">Hành động</th>
+                                <th class="p-3">Thời gian</th>
+                                <th class="p-3">Thành tiền</th>
+                                <th class="p-3 text-center">Xóa</th>
                             </tr>
                         </thead>
-                        <tbody id="data-list" class="text-gray-700 text-sm divide-y">
-                            <!-- Data inject bằng JS -->
+                        <tbody id="data-list" class="text-slate-700 text-sm divide-y divide-slate-100">
+                            <!-- JS Inject -->
                         </tbody>
                     </table>
                 </div>
@@ -92,13 +143,13 @@
         </div>
     </div>
 
-    <!-- Firebase SDK Modulized -->
+    <!-- Firebase SDK Setup Modules -->
     <script type="module">
-        import { initializeApp } from "https://gstatic.com";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://gstatic.com";
-        import { getDatabase, ref, set, push, onValue, remove } from "https://gstatic.com";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getDatabase, ref, set, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-        // Cấu hình Firebase cá nhân của bạn
+        // Cấu hình Firebase cá nhân
         const firebaseConfig = {
             apiKey: "AIzaSyDsZ9Cgdjsj0N9iyKCC0GKF-WBmN-3ym6o",
             authDomain: "khoanchitrongngay.firebaseapp.com",
@@ -109,73 +160,229 @@
             appId: "1:939154018851:web:54201d0e1f8db425f91796"
         };
 
-        // Khởi tạo các dịch vụ
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getDatabase(app);
         const provider = new GoogleAuthProvider();
 
-        // Biến toàn cục lưu UID người dùng hiện tại
         let currentUserUid = null;
 
-        // Elements DOM
+        // Elements
         const loginScreen = document.getElementById('login-screen');
         const mainScreen = document.getElementById('main-screen');
         const userEmailText = document.getElementById('user-email');
         const bookingTypeSelect = document.getElementById('booking-type');
-        const rateHelpText = document.getElementById('rate-help');
+        const rateHourlyBox = document.getElementById('rate-hourly-box');
+        const rateFixedBox = document.getElementById('rate-fixed-box');
         const bookingForm = document.getElementById('booking-form');
         const dataList = document.getElementById('data-list');
 
-        // Lắng nghe thay đổi loại hình thuê để đổi nhãn hướng dẫn giá
+        // Toggle giao diện nhập đơn giá theo mô hình thuê
         bookingTypeSelect.addEventListener('change', (e) => {
             if (e.target.value === 'hourly') {
-                rateHelpText.innerText = "Mức giá tính trên mỗi giờ thuê.";
+                rateHourlyBox.classList.remove('hidden');
+                rateFixedBox.classList.add('hidden');
             } else {
-                rateHelpText.innerText = "Mức giá tính trên trọn gói một đêm (Check-in 14h - Check-out 12h hôm sau).";
+                rateHourlyBox.classList.add('hidden');
+                rateFixedBox.classList.remove('hidden');
             }
         });
 
-        // Hàm tính toán chi phí dựa theo nguyên tắc ở prompt trước
-        function calculateStay(checkInStr, checkOutStr, type, rate) {
+        // Thuật toán tính tiền theo chuẩn mô hình tại VN
+        function calculateStay(checkInStr, checkOutStr, type) {
             const inDate = new Date(checkInStr);
             const outDate = new Date(checkOutStr);
             const diffMs = outDate - inDate;
 
-            if (diffMs <= 0) return { durationText: "Lỗi thời gian", totalCost: 0 };
+            if (diffMs <= 0) return { durationText: "Thời gian không hợp lệ", totalCost: 0 };
+
+            const totalMinutes = Math.floor(diffMs / (1000 * 60));
 
             if (type === 'hourly') {
-                // Thuê theo giờ: Tính số giờ thực tế, làm tròn lên nếu quá block
-                const diffHours = Math.ceil(diffMs / (1000 * 60 * 60));
+                const firstHoursPrice = parseFloat(document.getElementById('price-first-hours').value) || 0;
+                const nextHourPrice = parseFloat(document.getElementById('price-next-hour').value) || 0;
+
+                // Quy tắc: 2 giờ đầu cố định
+                if (totalMinutes <= 120) {
+                    return {
+                        durationText: `${Math.ceil(totalMinutes / 60)} giờ`,
+                        totalCost: firstHoursPrice
+                    };
+                } else {
+                    const extraMinutes = totalMinutes - 120;
+                    let extraHours = Math.floor(extraMinutes / 60);
+                    const remMinutes = extraMinutes % 60;
+                    
+                    // Phụ thu nếu quá 15 phút
+                    if (remMinutes > 15) {
+                        extraHours += 1;
+                    }
+
+                    const totalHours = 2 + extraHours;
+                    const totalCost = firstHoursPrice + (extraHours * nextHourPrice);
+                    return {
+                        durationText: `${totalHours} giờ (${totalMinutes} phút)`,
+                        totalCost: totalCost
+                    };
+                }
+            } else if (type === 'overnight') {
+                const fixedPrice = parseFloat(document.getElementById('price-fixed').value) || 0;
+                const totalHours = (diffMs / (1000 * 60 * 60)).toFixed(1);
                 return {
-                    durationText: `${diffHours} giờ`,
-                    totalCost: diffHours * rate
+                    durationText: `Qua đêm (~${totalHours} tiếng)`,
+                    totalCost: fixedPrice
                 };
             } else {
-                // Thuê qua đêm: Tính số đêm lưu trú dựa trên ngày
-                // 1 đêm chuẩn = Check-in ngày hôm trước đến 12h trưa hôm sau.
-                const oneDayMs = 24 * 60 * 60 * 1000;
-                let nights = Math.ceil(diffMs / oneDayMs);
-                if(nights === 0) nights = 1; // Tối thiểu tính 1 đêm nếu đặt qua đêm
-
+                // Theo ngày (Daily)
+                const fixedPrice = parseFloat(document.getElementById('price-fixed').value) || 0;
+                const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
                 return {
-                    durationText: `${nights} đêm`,
-                    totalCost: nights * rate
+                    durationText: `${days} ngày`,
+                    totalCost: days * fixedPrice
                 };
             }
         }
 
-        // --- Xử lý Đăng Nhập / Đăng Xuất ---
+        // Auth Listeners
         document.getElementById('btn-login').addEventListener('click', () => {
-            signInWithPopup(auth, provider).catch(error => alert("Đăng nhập thất bại: " + error.message));
+            signInWithPopup(auth, provider).catch(error => alert("Lỗi đăng nhập: " + error.message));
         });
 
         document.getElementById('btn-logout').addEventListener('click', () => {
             signOut(auth);
         });
 
-        // Theo dõi trạng thái đăng nhập hệ thống
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 currentUserUid = user.uid;
-Use code with caution.userEmailText.innerText = Tài khoản: ${user.email};loginScreen.classList.add('hidden');mainScreen.classList.remove('hidden');loadUserData(user.uid); // Tải dữ liệu của riêng User này} else {currentUserUid = null;loginScreen.classList.remove('hidden');mainScreen.classList.add('hidden');dataList.innerHTML = "";}});// --- Thao tác Dữ liệu Database (CRUD) ---// Lưu lịch trình mớibookingForm.addEventListener('submit', (e) => {e.preventDefault();if (!currentUserUid) return;const hotelName = document.getElementById('hotel-name').value;const type = bookingTypeSelect.value;const checkIn = document.getElementById('check-in').value;const checkOut = document.getElementById('check-out').value;const rate = parseFloat(document.getElementById('price-rate').value);const result = calculateStay(checkIn, checkOut, type, rate);if (result.totalCost <= 0) {alert("Thời gian trả phòng phải lớn hơn thời gian nhận phòng.");return;}const userBookingsRef = ref(db, users/${currentUserUid}/bookings);const newBookingRef = push(userBookingsRef);set(newBookingRef, {hotelName,type,checkIn,checkOut,rate,durationText: result.durationText,totalCost: result.totalCost,createdAt: new Date().toISOString()}).then(() => {bookingForm.reset();rateHelpText.innerText = "Mức giá tính trên mỗi giờ thuê.";}).catch(err => alert("Lỗi lưu dữ liệu: " + err.message));});// Lấy dữ liệu Realtime và hiển thị lên bảngfunction loadUserData(uid) {const userBookingsRef = ref(db, users/${uid}/bookings);onValue(userBookingsRef, (snapshot) => {dataList.innerHTML = "";const data = snapshot.val();if (!data) {dataList.innerHTML = <tr><td colspan="5" class="p-4 text-center text-gray-400">Chưa có lịch sử thuê phòng nào được lưu.</td></tr>;return;}// Chuyển object sang array để sắp xếp theo thời gian tạo mới nhấtconst items = Object.keys(data).map(key => ({ id: key, ...data[key] }));items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));items.forEach(item => {const tr = document.createElement('tr');tr.className = "hover:bg-gray-50 transition";const formatIn = new Date(item.checkIn).toLocaleString('vi-VN', {dateStyle: 'short', timeStyle: 'short'});const formatOut = new Date(item.checkOut).toLocaleString('vi-VN', {dateStyle: 'short', timeStyle: 'short'});const typeLabel = item.type === 'hourly' ? '⏱️ Theo giờ' : '🌙 Qua đêm';tr.innerHTML = <td class="p-3 font-medium text-gray-800">${item.hotelName}</td> <td class="p-3"><span class="px-2 py-1 rounded text-xs font-semibold ${item.type === 'hourly' ? 'bg-orange-100 text-orange-700' : 'bg-indigo-100 text-indigo-700'}">${typeLabel}</span></td> <td class="p-3 text-xs text-gray-500"> <div>Vào: ${formatIn}</div> <div>Ra: ${formatOut}</div> <div class="text-blue-600 font-medium mt-0.5">Tổng: ${item.durationText}</div> </td> <td class="p-3 font-bold text-green-600">${item.totalCost.toLocaleString('vi-VN')} đ</td> <td class="p-3 text-center"> <button data-id="${item.id}" class="btn-delete bg-red-50 hover:bg-red-100 text-red-500 p-1.5 rounded-lg transition">🗑️ Xóa</button> </td>;dataList.appendChild(tr);});// Gán sự kiện xóa cho các nútdocument.querySelectorAll('.btn-delete').forEach(button => {button.addEventListener('click', (e) => {const id = e.target.getAttribute('data-id');if (confirm("Bạn có chắc chắn muốn xóa bản ghi lưu trú này không?")) {remove(ref(db, users/${uid}/bookings/${id}));}});});});}
+                userEmailText.innerText = user.email;
+                loginScreen.classList.add('hidden');
+                mainScreen.classList.remove('hidden');
+                loadUserData(user.uid);
+            } else {
+                currentUserUid = null;
+                loginScreen.classList.remove('hidden');
+                mainScreen.classList.add('hidden');
+                dataList.innerHTML = "";
+            }
+        });
+
+        // Form Submit
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (!currentUserUid) return;
+
+            const hotelName = document.getElementById('hotel-name').value;
+            const type = bookingTypeSelect.value;
+            const checkIn = document.getElementById('check-in').value;
+            const checkOut = document.getElementById('check-out').value;
+
+            const result = calculateStay(checkIn, checkOut, type);
+            if (result.totalCost <= 0) {
+                alert("Vui lòng kiểm tra lại thời gian và mức giá nhập vào!");
+                return;
+            }
+
+            const userBookingsRef = ref(db, `users/${currentUserUid}/bookings`);
+            const newBookingRef = push(userBookingsRef);
+
+            set(newBookingRef, {
+                hotelName,
+                type,
+                checkIn,
+                checkOut,
+                durationText: result.durationText,
+                totalCost: result.totalCost,
+                createdAt: new Date().toISOString()
+            }).then(() => {
+                bookingForm.reset();
+                bookingTypeSelect.dispatchEvent(new Event('change'));
+            }).catch(err => alert("Lỗi lưu dữ liệu: " + err.message));
+        });
+
+        // Read Data Realtime
+        function loadUserData(uid) {
+            const userBookingsRef = ref(db, `users/${uid}/bookings`);
+            onValue(userBookingsRef, (snapshot) => {
+                dataList.innerHTML = "";
+                const data = snapshot.val();
+                
+                if (!data) {
+                    dataList.innerHTML = `<tr><td colspan="4" class="p-6 text-center text-slate-400">Chưa có lịch sử lưu trú nào.</td></tr>`;
+                    updateStats([]);
+                    return;
+                }
+
+                const items = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+                items.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+                updateStats(items);
+
+                items.forEach(item => {
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-slate-50 transition";
+                    
+                    const formatIn = new Date(item.checkIn).toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
+                    const formatOut = new Date(item.checkOut).toLocaleString('vi-VN', { dateStyle: 'short', timeStyle: 'short' });
+                    
+                    let typeBadge = '';
+                    if(item.type === 'hourly') typeBadge = '<span class="bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-md text-[11px] font-semibold">Theo giờ</span>';
+                    else if(item.type === 'overnight') typeBadge = '<span class="bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-md text-[11px] font-semibold">Qua đêm</span>';
+                    else typeBadge = '<span class="bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-md text-[11px] font-semibold">Theo ngày</span>';
+
+                    tr.innerHTML = `
+                        <td class="p-3">
+                            <div class="font-medium text-slate-800">${item.hotelName}</div>
+                            <div class="mt-0.5">${typeBadge}</div>
+                        </td>
+                        <td class="p-3 text-xs text-slate-500">
+                            <div>Từ: <span class="text-slate-700 font-medium">${formatIn}</span></div>
+                            <div>Đến: <span class="text-slate-700 font-medium">${formatOut}</span></div>
+                            <div class="text-indigo-600 font-medium mt-0.5">⏱️ ${item.durationText}</div>
+                        </td>
+                        <td class="p-3 font-bold text-indigo-600">
+                            ${item.totalCost.toLocaleString('vi-VN')} đ
+                        </td>
+                        <td class="p-3 text-center">
+                            <button data-id="${item.id}" class="btn-delete text-slate-400 hover:text-red-500 p-1.5 rounded-lg transition hover:bg-red-50">
+                                🗑️
+                            </button>
+                        </td>
+                    `;
+                    dataList.appendChild(tr);
+                });
+
+                document.querySelectorAll('.btn-delete').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = e.target.getAttribute('data-id');
+                        if (confirm("Xác nhận xóa bản ghi lưu trú này?")) {
+                            remove(ref(db, `users/${uid}/bookings/${id}`));
+                        }
+                    });
+                });
+            });
+        }
+
+        // Cập nhật thống kê nhanh
+        function updateStats(items) {
+            const totalCost = items.reduce((sum, item) => sum + (item.totalCost || 0), 0);
+            document.getElementById('stat-total-cost').innerText = `${totalCost.toLocaleString('vi-VN')} đ`;
+            document.getElementById('stat-total-stays').innerText = `${items.length} lượt`;
+
+            if (items.length === 0) {
+                document.getElementById('stat-popular-type').innerText = '--';
+                return;
+            }
+
+            const typeCounts = items.reduce((acc, item) => {
+                acc[item.type] = (acc[item.type] || 0) + 1;
+                return acc;
+            }, {});
+
+            const popularType = Object.keys(typeCounts).reduce((a, b) => typeCounts[a] > typeCounts[b] ? a : b);
+            const labels = { hourly: 'Theo giờ', overnight: 'Qua đêm', daily: 'Theo ngày' };
+            document.getElementById('stat-popular-type').innerText = labels[popularType] || '--';
+        }
+    </script>
+</body>
+</html>
